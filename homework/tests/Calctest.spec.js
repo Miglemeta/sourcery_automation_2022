@@ -14,8 +14,6 @@ const data = [
   '9'
 ]
 
- for(let i=0; i<3; i++) {
-  test.describe('runing test ' + i, () => {
 data.forEach(version => {
   test.describe(version + ': Add', () => {
     test('Concatenating 2 and 3 results in 23', async ({ page }) => {
@@ -31,6 +29,7 @@ data.forEach(version => {
   });
 });
 
+
 data.forEach(version => {
   test.describe(version + ': Add', () => {
     test('Add 2 and 2 results in 4', async ({ page }) => {
@@ -39,12 +38,15 @@ data.forEach(version => {
       await page.locator('input[name=number1]').type('2');
       await page.locator('input[name=number2]').type('2');
       await page.selectOption('#selectOperationDropdown', {label: 'Add'});
+      for(let i=0; i<3; i++) {//for loop to see if any version of calculator gives different result when execution repeats
       await page.locator('#calculateButton').click();
   
       await expect(page.locator('input[name=numberAnswer]')).toHaveValue('4');
-    });
+    }
   });
 });
+});
+
 
 data.forEach(version => {
     test.describe(version + ': Add', () => {
@@ -154,5 +156,19 @@ data.forEach(version => {
       });
     });
   });
-});
-};
+
+data.forEach(version => {
+    test.describe(version + ': Add', () => {
+      test('Select Integers only and add 3.44 and 1.33 results in 4', async ({ page }) => {
+        await page.goto('https://testsheepnz.github.io/BasicCalculator');
+        await page.selectOption('#selectBuild', { label: version});
+        await page.locator('input[name=number1]').type('3.44');
+        await page.locator('input[name=number2]').type('1.33');
+        await page.selectOption('#selectOperationDropdown', {label: 'Add'});
+        await page.locator('#integerSelect').check();
+        await page.locator('#calculateButton').click();
+    
+        await expect(page.locator('input[name=numberAnswer]')).toHaveValue('4');
+      });
+    });
+  });
