@@ -21,7 +21,7 @@ data.forEach(version => {
       await page.selectOption('#selectBuild', { label: version});
       await page.locator('#number1Field').type('2');
       await page.locator('#number2Field').type('3');
-      await page.selectOption('#selectOperationDropdown', {label: 'Add'});
+      await page.selectOption('#selectOperationDropdown', {label: 'Concatenate'});
       await page.locator('#calculateButton').click();
   
       await expect(page.locator('nput[name=numberAnswer]')).toHaveValue('23');
@@ -30,145 +30,145 @@ data.forEach(version => {
 });
 
 
-data.forEach(version => {
-  test.describe(version + ': Add', () => {
-    test('Add 2 and 2 results in 4', async ({ page }) => {
-      await page.goto('https://testsheepnz.github.io/BasicCalculator');
-      await page.selectOption('#selectBuild', { label: version});
-      await page.locator('input[name=number1]').type('2');
-      await page.locator('input[name=number2]').type('2');
-      await page.selectOption('#selectOperationDropdown', {label: 'Add'});
-      for(let i=0; i<3; i++) {//for loop to see if any version of calculator gives different result when execution repeats
-      await page.locator('#calculateButton').click();
+// data.forEach(version => {
+//   test.describe(version + ': Add', () => {
+//     test('Add 2 and 2 results in 4', async ({ page }) => {
+//       await page.goto('https://testsheepnz.github.io/BasicCalculator');
+//       await page.selectOption('#selectBuild', { label: version});
+//       await page.locator('input[name=number1]').type('2');
+//       await page.locator('input[name=number2]').type('2');
+//       await page.selectOption('#selectOperationDropdown', {label: 'Add'});
+//       for(let i=0; i<3; i++) {//for loop to see if any version of calculator gives different result when execution repeats
+//       await page.locator('#calculateButton').click();
   
-      await expect(page.locator('input[name=numberAnswer]')).toHaveValue('4');
-    }
-  });
-});
-});
+//       await expect(page.locator('input[name=numberAnswer]')).toHaveValue('4');
+//     }
+//   });
+// });
+// });
 
 
-data.forEach(version => {
-    test.describe(version + ': Add', () => {
-      test('First number input field is visible', async ({ page }) => {
-        await page.goto('https://testsheepnz.github.io/BasicCalculator');
-        await page.selectOption('#selectBuild', { label: version});
+// data.forEach(version => {
+//     test.describe(version + ': Add', () => {
+//       test('First number input field is visible', async ({ page }) => {
+//         await page.goto('https://testsheepnz.github.io/BasicCalculator');
+//         await page.selectOption('#selectBuild', { label: version});
        
-        await expect(page.locator('input[name=number1]')).toBeVisible();
+//         await expect(page.locator('input[name=number1]')).toBeVisible();
         
-      });
-    });
-  });
+//       });
+//     });
+//   });
 
-  data.forEach(version => {
-    test.describe(version + ': Add', () => {
-      test('Second number input field is visible', async ({ page }) => {
-        await page.goto('https://testsheepnz.github.io/BasicCalculator');
-        await page.selectOption('#selectBuild', { label: version});
+//   data.forEach(version => {
+//     test.describe(version + ': Add', () => {
+//       test('Second number input field is visible', async ({ page }) => {
+//         await page.goto('https://testsheepnz.github.io/BasicCalculator');
+//         await page.selectOption('#selectBuild', { label: version});
      
-        await expect(page.locator('input[name=number2]')).toBeVisible();
-      });
-    });
-  });
+//         await expect(page.locator('input[name=number2]')).toBeVisible();
+//       });
+//     });
+//   });
 
-  data.forEach(version => {
-    test.describe(version + ': Add', () => {
-      test('Subtract 2 from 20 results in 18', async ({ page }) => {
-        await page.goto('https://testsheepnz.github.io/BasicCalculator');
-        await page.selectOption('#selectBuild', { label: version});
-        await page.locator('input[name=number1]').type('20');
-        await page.locator('input[name=number2]').type('2');
-        await page.selectOption('#selectOperationDropdown', {label: 'Subtract'});
-        await page.locator('#calculateButton').click();
+//   data.forEach(version => {
+//     test.describe(version + ': Add', () => {
+//       test('Subtract 2 from 20 results in 18', async ({ page }) => {
+//         await page.goto('https://testsheepnz.github.io/BasicCalculator');
+//         await page.selectOption('#selectBuild', { label: version});
+//         await page.locator('input[name=number1]').type('20');
+//         await page.locator('input[name=number2]').type('2');
+//         await page.selectOption('#selectOperationDropdown', {label: 'Subtract'});
+//         await page.locator('#calculateButton').click();
     
-        await expect(page.locator('nput[name=numberAnswer]')).toHaveValue('18');
-      });
-    });
-  });
+//         await expect(page.locator('nput[name=numberAnswer]')).toHaveValue('18');
+//       });
+//     });
+//   });
 
-  data.forEach(version => {
-    test.describe(version + ': Add', () => {
-      test('Multiply 3 and 3 results in 9', async ({ page }) => {
-        await page.goto('https://testsheepnz.github.io/BasicCalculator');
-        await page.selectOption('#selectBuild', { label: version});
-        await page.locator('input[name=number1]').type('3');
-        await page.locator('input[name=number2]').type('3');
-        await page.selectOption('#selectOperationDropdown', {label: 'Multiply'});
-        await page.locator('#calculateButton').click();
+//   data.forEach(version => {
+//     test.describe(version + ': Add', () => {
+//       test('Multiply 3 and 3 results in 9', async ({ page }) => {
+//         await page.goto('https://testsheepnz.github.io/BasicCalculator');
+//         await page.selectOption('#selectBuild', { label: version});
+//         await page.locator('input[name=number1]').type('3');
+//         await page.locator('input[name=number2]').type('3');
+//         await page.selectOption('#selectOperationDropdown', {label: 'Multiply'});
+//         await page.locator('#calculateButton').click();
     
-        await expect(page.locator('nput[name=numberAnswer]')).toHaveValue('9');
-      });
-    });
-  });
+//         await expect(page.locator('nput[name=numberAnswer]')).toHaveValue('9');
+//       });
+//     });
+//   });
 
-  data.forEach(version => {
-    test.describe(version + ': Add', () => {
-      test('Divide 9 and 3 results in 3', async ({ page }) => {
-        await page.goto('https://testsheepnz.github.io/BasicCalculator');
-        await page.selectOption('#selectBuild', { label: version});
-        await page.locator('input[name=number1]').type('9');
-        await page.locator('input[name=number2]').type('3');
-        await page.selectOption('#selectOperationDropdown', {label: 'Divide'});
-        await page.locator('#calculateButton').click();
+//   data.forEach(version => {
+//     test.describe(version + ': Add', () => {
+//       test('Divide 9 and 3 results in 3', async ({ page }) => {
+//         await page.goto('https://testsheepnz.github.io/BasicCalculator');
+//         await page.selectOption('#selectBuild', { label: version});
+//         await page.locator('input[name=number1]').type('9');
+//         await page.locator('input[name=number2]').type('3');
+//         await page.selectOption('#selectOperationDropdown', {label: 'Divide'});
+//         await page.locator('#calculateButton').click();
     
-        await expect(page.locator('nput[name=numberAnswer]')).toHaveValue('3');
-      });
-    });
-  });
+//         await expect(page.locator('nput[name=numberAnswer]')).toHaveValue('3');
+//       });
+//     });
+//   });
 
-  data.forEach(version => {
-    test.describe(version + ': Add', () => {
-      test('Typing text in a first number input field instead of numbers results in " "' , async ({ page }) => {
-        await page.goto('https://testsheepnz.github.io/BasicCalculator');
-        await page.selectOption('#selectBuild', { label: version});
-        await page.locator('input[name=number1]').type('Text');
+//   data.forEach(version => {
+//     test.describe(version + ': Add', () => {
+//       test('Typing text in a first number input field instead of numbers results in " "' , async ({ page }) => {
+//         await page.goto('https://testsheepnz.github.io/BasicCalculator');
+//         await page.selectOption('#selectBuild', { label: version});
+//         await page.locator('input[name=number1]').type('Text');
        
     
-        await expect(page.locator('input[name=number1]')).toHaveValue(' ');
-      });
-    });
-  });
+//         await expect(page.locator('input[name=number1]')).toHaveValue(' ');
+//       });
+//     });
+//   });
 
-  data.forEach(version => {
-    test.describe(version + ': Add', () => {
-      test('Typing text in a second number input field instead of numbers results in " "' , async ({ page }) => {
-        await page.goto('https://testsheepnz.github.io/BasicCalculator');
-        await page.selectOption('#selectBuild', { label: version});
-        await page.locator('input[name=number2]').type('Text');
+//   data.forEach(version => {
+//     test.describe(version + ': Add', () => {
+//       test('Typing text in a second number input field instead of numbers results in " "' , async ({ page }) => {
+//         await page.goto('https://testsheepnz.github.io/BasicCalculator');
+//         await page.selectOption('#selectBuild', { label: version});
+//         await page.locator('input[name=number2]').type('Text');
        
     
-        await expect(page.locator('input[name=number2]')).toHaveValue(' ');
-      });
-    });
-  });
+//         await expect(page.locator('input[name=number2]')).toHaveValue(' ');
+//       });
+//     });
+//   });
 
-data.forEach(version => {
-    test.describe(version + ': Add', () => {
-      test('Add 3.44 and 1.33 results in 4.77', async ({ page }) => {
-        await page.goto('https://testsheepnz.github.io/BasicCalculator');
-        await page.selectOption('#selectBuild', { label: version});
-        await page.locator('input[name=number1]').type('3.44');
-        await page.locator('input[name=number2]').type('1.33');
-        await page.selectOption('#selectOperationDropdown', {label: 'Add'});
-        await page.locator('#calculateButton').click();
+// data.forEach(version => {
+//     test.describe(version + ': Add', () => {
+//       test('Add 3.44 and 1.33 results in 4.77', async ({ page }) => {
+//         await page.goto('https://testsheepnz.github.io/BasicCalculator');
+//         await page.selectOption('#selectBuild', { label: version});
+//         await page.locator('input[name=number1]').type('3.44');
+//         await page.locator('input[name=number2]').type('1.33');
+//         await page.selectOption('#selectOperationDropdown', {label: 'Add'});
+//         await page.locator('#calculateButton').click();
     
-        await expect(page.locator('input[name=numberAnswer]')).toHaveValue('4.77');
-      });
-    });
-  });
+//         await expect(page.locator('input[name=numberAnswer]')).toHaveValue('4.77');
+//       });
+//     });
+//   });
 
-data.forEach(version => {
-    test.describe(version + ': Add', () => {
-      test('Select Integers only and add 3.44 and 1.33 results in 4', async ({ page }) => {
-        await page.goto('https://testsheepnz.github.io/BasicCalculator');
-        await page.selectOption('#selectBuild', { label: version});
-        await page.locator('input[name=number1]').type('3.44');
-        await page.locator('input[name=number2]').type('1.33');
-        await page.selectOption('#selectOperationDropdown', {label: 'Add'});
-        await page.locator('#integerSelect').check();
-        await page.locator('#calculateButton').click();
+// data.forEach(version => {
+//     test.describe(version + ': Add', () => {
+//       test('Select Integers only and add 3.44 and 1.33 results in 4', async ({ page }) => {
+//         await page.goto('https://testsheepnz.github.io/BasicCalculator');
+//         await page.selectOption('#selectBuild', { label: version});
+//         await page.locator('input[name=number1]').type('3.44');
+//         await page.locator('input[name=number2]').type('1.33');
+//         await page.selectOption('#selectOperationDropdown', {label: 'Add'});
+//         await page.locator('#integerSelect').check();
+//         await page.locator('#calculateButton').click();
     
-        await expect(page.locator('input[name=numberAnswer]')).toHaveValue('4');
-      });
-    });
-  });
+//         await expect(page.locator('input[name=numberAnswer]')).toHaveValue('4');
+//       });
+//     });
+//   });
